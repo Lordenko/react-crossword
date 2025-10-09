@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Layaout from './_Layaout';
 
@@ -8,16 +8,17 @@ type Player = {
     score: number;
 };
 
-const players: Player[] = [
-    { rank: 1, name: "Аліса", score: 120 },
-    { rank: 2, name: "Боб", score: 110 },
-    { rank: 3, name: "Карл", score: 95 },
-    { rank: 4, name: "Даша", score: 80 },
-    { rank: 5, name: "Ева", score: 70 },
-];
+const Results = () => {
+    const [players, setPlayers] = useState<Player[]>(
+        [
+            { rank: 1, name: "Аліса", score: 120 },
+            { rank: 2, name: "Боб", score: 110 },
+            { rank: 3, name: "Карл", score: 95 },
+            { rank: 4, name: "Даша", score: 80 },
+            { rank: 5, name: "Ева", score: 70 },
+        ]
+    ) // Зробив через юсСтейт по умовам лаби (необхідний стан для кожної сторінки)
 
-
-function Results() {
     return (
         <>
             <div className="overflow-x-auto w-full max-w-md mx-auto mt-8">
@@ -26,7 +27,7 @@ function Results() {
                         <tr className="bg-gray-200">
                             <th className="border border-gray-300 p-2">#</th>
                             <th className="border border-gray-300 p-2">Ім’я</th>
-                            <th className="border border-gray-300 p-2">Очки</th>
+                            <th className="border border-gray-300 p-2">Бали</th>
                         </tr>
                     </thead>
                     <tbody>

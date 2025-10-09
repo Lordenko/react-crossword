@@ -2,7 +2,7 @@ import React from 'react';
 
 import Layaout from './_Layaout';
 
-function Start() {
+const Start = () => {
     return (
         <>
             <button>Розпочати гру</button>
