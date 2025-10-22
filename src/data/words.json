@@ -1,0 +1,221 @@
+{
+    "grids": [
+        {
+            "grid": [
+                [
+                    "c",
+                    "a",
+                    "n"
+                ],
+                [
+                    "a",
+                    "g",
+                    "e"
+                ],
+                [
+                    "r",
+                    "o",
+                    "w"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "To be able to",
+                    "The length of life",
+                    "Some stuff arranged in a line"
+                ],
+                "Vertical": [
+                    "An automobile",
+                    "Past, gone, before now",
+                    "Not existing before"
+                ]
+            }
+        },
+        {
+            "grid": [
+                [
+                    "d",
+                    "a",
+                    "d"
+                ],
+                [
+                    "o",
+                    "w",
+                    "e"
+                ],
+                [
+                    "t",
+                    "e",
+                    "n"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "Familiar term for father",
+                    "To be in debt for something",
+                    "Between nine and eleven"
+                ],
+                "Vertical": [
+                    "A very small mark",
+                    "Fear",
+                    "A place where a wild animal lives"
+                ]
+            }
+        },
+        {
+            "grid": [
+                [
+                    "d",
+                    "e",
+                    "n"
+                ],
+                [
+                    "i",
+                    "r",
+                    "e"
+                ],
+                [
+                    "e",
+                    "a",
+                    "t"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "A place where a wild animal lives",
+                    "If you have it, you are angry",
+                    "Put food in your body"
+                ],
+                "Vertical": [
+                    "Cease living",
+                    "Big period of time",
+                    "Remaining after the expenses are paid"
+                ]
+            }
+        },
+        {
+            "grid": [
+                [
+                    "f",
+                    "a",
+                    "n"
+                ],
+                [
+                    "a",
+                    "g",
+                    "e"
+                ],
+                [
+                    "r",
+                    "o",
+                    "w"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "Device used to create cool air",
+                    "The length of life",
+                    "Some stuff arranged in a line"
+                ],
+                "Vertical": [
+                    "Who is at a great distance",
+                    "Past, gone, before now",
+                    "Not existing before"
+                ]
+            }
+        },
+        {
+            "grid": [
+                [
+                    "g",
+                    "e",
+                    "m"
+                ],
+                [
+                    "e",
+                    "r",
+                    "a"
+                ],
+                [
+                    "t",
+                    "r",
+                    "y"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "A rare and beautiful stone",
+                    "Big period of time",
+                    "Attempt, seek to do"
+                ],
+                "Vertical": [
+                    "To obtain",
+                    "To make a mistake",
+                    "Month after April and before June"
+                ]
+            }
+        },
+        {
+            "grid": [
+                [
+                    "g",
+                    "e",
+                    "m"
+                ],
+                [
+                    "o",
+                    "r",
+                    "e"
+                ],
+                [
+                    "t",
+                    "a",
+                    "n"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "A rare and beautiful stone",
+                    "Material taken from the ground containing metals",
+                    "A light brown color"
+                ],
+                "Vertical": [
+                    "Past tense and participle of get",
+                    "Big period of time",
+                    "Plural of man"
+                ]
+            }
+        },
+        {
+            "grid": [
+                [
+                    "g",
+                    "e",
+                    "t"
+                ],
+                [
+                    "o",
+                    "r",
+                    "e"
+                ],
+                [
+                    "t",
+                    "a",
+                    "n"
+                ]
+            ],
+            "clue": {
+                "Horizontal": [
+                    "To obtain",
+                    "Material taken from the ground containing metals",
+                    "A light brown color"
+                ],
+                "Vertical": [
+                    "Past tense and participle of get",
+                    "Big period of time",
+                    "Between nine and eleven"
+                ]
+            }
+        }
+    ]
+}
