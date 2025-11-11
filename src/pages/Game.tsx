@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import wordsJsonRaw from '../data/words.json'
+import wordsJsonRaw from '../assets/words.json'
 
 import WordInput from '../components/Inputs/WordInput'
+
+import FinishGamePortal from '../components/Portals/FinishGamePortal'
 
 import { useInputWords, useCrosswordWords, useActiveElementIndex, useCrosswordSolved, useCrosswordSettings } from '../state/index'
 
@@ -12,7 +14,7 @@ const wordsJson: WordsJson = wordsJsonRaw as WordsJson
 
 const Game = () => {
     const { activeElementIndex, setActiveElementIndex } = useActiveElementIndex()
-    const { inputWords, setInputWords, setInputWord } = useInputWords()
+    const { inputWords, setInputWord, clearInputWords } = useInputWords()
     const { crosswordWords, setCrosswordWords } = useCrosswordWords()
     const { crosswordSolved, setCrosswordSolved } = useCrosswordSolved()
     const { numberOfCrossword, setNumberOfCrossword } = useCrosswordSettings()
@@ -85,11 +87,11 @@ const Game = () => {
 
 
             {/* Congratulations message */}
-            {crosswordSolved && (
-                <div className="text-center mt-8 text-green-600 font-bold text-xl animate-bounce">
-                    🎉 Congratulations! You solved the crossword!
-                </div>
-            )}
+            <FinishGamePortal
+                crosswordSolved={crosswordSolved}
+                setCrosswordSolved={setCrosswordSolved}
+                clearInputWords={clearInputWords}
+            />
         </>
     );
 }
@@ -100,5 +102,6 @@ const checkCrossword = (inputWords: string[][], crosswordWords: string[][]) => {
     }
     else return false
 }
+
 
 export default Game;

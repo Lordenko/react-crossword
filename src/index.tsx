@@ -8,6 +8,7 @@ import Layaout from './pages/_Layaout';
 import Start from './pages/Start';
 import Game from './pages/Game'
 import Results from './pages/Results';
+import Settings from './pages/Settings';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

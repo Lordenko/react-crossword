@@ -9,7 +9,8 @@ export const useInputWords = create<InputWordsState>((set) => ({
         const updatedInputWords = [...state.inputWords]
         updatedInputWords[elementIndex.row][elementIndex.col] = value
         return { inputWords: updatedInputWords }
-    })
+    }),
+    clearInputWords: () => set({ inputWords: Array(3).fill(null).map(() => Array(3).fill("")) })
 }))
 
 export const useCrosswordWords = create<CrosswordWordsState>((set) => ({

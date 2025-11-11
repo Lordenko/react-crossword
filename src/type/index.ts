@@ -8,11 +8,18 @@ export interface WordInputProps {
     crosswordWords: string[][]
 }
 
+export interface FinishGamePortalProps {
+    crosswordSolved: boolean,
+    setCrosswordSolved: (crosswordSolved: boolean) => void
+    clearInputWords: () => void
+}
+
 // <------ State ------>
 export interface InputWordsState {
     inputWords: string[][],
     setInputWords: (words: string[][]) => void,
-    setInputWord: (elementIndex: ElementIndex, value: string) => void
+    setInputWord: (elementIndex: ElementIndex, value: string) => void,
+    clearInputWords: () => void
 }
 
 export interface CrosswordWordsState {
