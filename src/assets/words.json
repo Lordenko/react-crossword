@@ -1,5 +1,5 @@
 {
-    "grids": [
+    "easy": [
         {
             "grid": [
                 [
@@ -61,7 +61,9 @@
                     "A place where a wild animal lives"
                 ]
             }
-        },
+        }
+    ],
+    "medium": [
         {
             "grid": [
                 [
@@ -123,7 +125,9 @@
                     "Not existing before"
                 ]
             }
-        },
+        }
+    ],
+    "hard": [
         {
             "grid": [
                 [

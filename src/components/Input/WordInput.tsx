@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { ElementIndex, WordInputProps } from "../../type";
+import { ElementIndex, WordInputProps } from "../../types";
 
 const WordInput = (props: WordInputProps) => {
     const boolCheckLetter = checkLetter(props.inputWords[props.elementIndex.row][props.elementIndex.col], props.elementIndex, props.crosswordWords)

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import Layaout from './_Layaout';
 
-import { Player } from '../type';
+import { Player } from '../types';
 
-import { usePlayers } from '../state/index'
+import { usePlayers } from '../states/GeneralState'
 
 
 const Results = () => {
