@@ -5,7 +5,7 @@ import Layaout from './_Layaout';
 const Start = () => {
     return (
         <>
-            <button>Розпочати гру</button>
+            <button>Start game</button>
         </>
     );
 }

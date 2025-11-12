@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { ElementIndex, WordInputProps } from "../../type";
+import { ElementIndex, WordInputProps } from "../../types";
 
 const WordInput = (props: WordInputProps) => {
     const boolCheckLetter = checkLetter(props.inputWords[props.elementIndex.row][props.elementIndex.col], props.elementIndex, props.crosswordWords)
@@ -8,12 +8,12 @@ const WordInput = (props: WordInputProps) => {
     const unSelected = (
         <label
             className={`
-      w-full h-full flex items-center justify-center rounded-lg text-lg font-semibold
-      border transition-all select-none
-      ${boolCheckLetter
+                w-full h-full flex items-center justify-center rounded-lg text-lg font-semibold
+                border transition-all select-none
+                ${boolCheckLetter
                     ? "bg-green-200 border-green-500 text-green-900"
                     : "bg-gray-100 border-gray-300 hover:bg-gray-200 hover:cursor-pointer active:scale-95"}
-    `}
+            `}
             onClick={() => {
                 !boolCheckLetter && props.setActiveElementIndex(props.elementIndex);
             }}
@@ -26,12 +26,12 @@ const WordInput = (props: WordInputProps) => {
         <input
             autoFocus
             className="
-      w-full h-full text-center rounded-lg text-lg font-semibold text-gray-800
-      border-2 border-blue-400 bg-blue-50/60
-      focus:bg-blue-100/80 focus:border-blue-500 focus:ring-2 focus:ring-blue-300
-      outline-none caret-transparent transition-all
-      placeholder-gray-500
-    "
+                w-full h-full text-center rounded-lg text-lg font-semibold text-gray-800
+                border-2 border-blue-400 bg-blue-50/60
+                focus:bg-blue-100/80 focus:border-blue-500 focus:ring-2 focus:ring-blue-300
+                outline-none caret-transparent transition-all
+                placeholder-gray-500
+            "
             placeholder={props.inputWords[props.elementIndex.row][props.elementIndex.col]}
             onBlur={() => {
                 props.setActiveElementIndex({ row: -1, col: -1 });
