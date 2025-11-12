@@ -22,7 +22,10 @@ const Game = () => {
 
         timer,
         startTimer,
-        resetTimer
+        resetTimer,
+
+        nextLevelOfDifficulty,
+        crosswordDifficulty
     } = useGameLogic()
 
     useEffect(() => {
@@ -92,9 +95,14 @@ const Game = () => {
             <FinishGamePortal
                 crosswordStatus={crosswordStatus}
                 setCrosswordStatus={setCrosswordStatus}
+
                 clearInputWords={clearInputWords}
+
                 resetTimer={resetTimer}
                 startTimer={startTimer}
+
+                crosswordDifficulty={crosswordDifficulty}
+                nextLevelOfDifficulty={nextLevelOfDifficulty}
             />
         </>
     );

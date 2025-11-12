@@ -34,7 +34,15 @@ export const useCrosswordStatus = create<CrosswordStatusState>((set) => ({
 export const useCrosswordDifficulty = create<CrosswordDifficultyState>((set) => ({
     crosswordDifficulty: "easy",
     setCrosswordDifficulty: (crosswordDifficulty: "easy" | "medium" | "hard") =>
-        set({ crosswordDifficulty })
+        set({ crosswordDifficulty }),
+    nextLevelOfDifficulty: () => set((state) => {
+        const nextLevel: Record<"easy" | "medium" | "hard", "easy" | "medium" | "hard"> = {
+            easy: "medium",
+            medium: "hard",
+            hard: "hard",
+        }
+        return { crosswordDifficulty: nextLevel[state.crosswordDifficulty] }
+    })
 }))
 
 export const useActiveElementIndex = create<ActiveElementIndexState>((set) => ({

@@ -14,7 +14,7 @@ const useGameLogic = () => {
     const { inputWords, setInputWord, clearInputWords } = useInputWords()
     const { crossword, setCrossword } = useCrossword()
     const { crosswordStatus, setCrosswordStatus } = useCrosswordStatus()
-    const { crosswordDifficulty, setCrosswordDifficulty } = useCrosswordDifficulty()
+    const { crosswordDifficulty, nextLevelOfDifficulty, setCrosswordDifficulty } = useCrosswordDifficulty()
 
     const {
         currentTimer: timer,
@@ -54,8 +54,8 @@ const useGameLogic = () => {
     }, [timer])
 
     useEffect(() => {
-
-    }, [startTimer])
+        localStorage.setItem('difficulty', crosswordDifficulty)
+    }, [crosswordDifficulty])
 
 
     return {
@@ -73,7 +73,10 @@ const useGameLogic = () => {
         timer,
         startTimer,
         stopTimer,
-        resetTimer
+        resetTimer,
+
+        crosswordDifficulty,
+        nextLevelOfDifficulty
     }
 }
 

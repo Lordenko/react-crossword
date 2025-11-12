@@ -10,10 +10,12 @@ export interface WordInputProps {
 
 export interface GameOverPortalProps {
     crosswordStatus: CrosswordStatus,
+    crosswordDifficulty: "easy" | "medium" | "hard",
     setCrosswordStatus: (crosswordStatus: CrosswordStatus) => void,
     clearInputWords: () => void,
     resetTimer: () => void,
-    startTimer: () => void
+    startTimer: () => void,
+    nextLevelOfDifficulty: () => void
 }
 
 export interface TimerProps {
@@ -30,7 +32,8 @@ export interface InputWordsState {
 
 export interface CrosswordDifficultyState {
     crosswordDifficulty: "easy" | "medium" | "hard",
-    setCrosswordDifficulty: (difficulty: "easy" | "medium" | "hard") => void
+    setCrosswordDifficulty: (difficulty: "easy" | "medium" | "hard") => void,
+    nextLevelOfDifficulty: () => void
 }
 
 export interface CrosswordState {
