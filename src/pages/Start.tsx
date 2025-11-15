@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Layaout from './_Layaout';
-
 const Start = () => {
     return (
         <>
