@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
-import { Player } from '../types';
+import { useEffect } from 'react';
 
 import { usePlayers } from '../states/GeneralState'
 
