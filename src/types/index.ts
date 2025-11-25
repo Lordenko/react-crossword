@@ -1,4 +1,9 @@
 // <------ Props ------>
+export interface PlayerCardProps {
+    player: Player
+    index?: number
+}
+
 export interface WordInputProps {
     elementIndex: ElementIndex
     activeElementIndex: ElementIndex;
@@ -30,6 +35,7 @@ export interface ErrorLayaoutProps {
 export interface LocalStorageState {
     players: Player[] | [],
     currentPlayerId: number | null,
+    sortPlayers: () => void,
     addPlayer: (player: Player) => void,
     setCurrentPlayerId: (playerId: number) => void,
     updatePlayerScore: (playerId: number, score: number) => void,

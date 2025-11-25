@@ -10,6 +10,10 @@ export const useLocalStorage = create<LocalStorageState>((set, get) => ({
         localStorage.setItem("currentPlayerId", JSON.stringify(playerId));
         return { currentPlayerId: playerId }
     }),
+    sortPlayers: () => set((state) => {
+        const sortedPlayers = [...state.players].sort((a, b) => b.info.score - a.info.score);
+        return { players: sortedPlayers };
+    }),
     addPlayer: (player: Player) => set((state) => {
         const updatedPlayers = [...state.players, player];
         localStorage.setItem("players", JSON.stringify(updatedPlayers));
