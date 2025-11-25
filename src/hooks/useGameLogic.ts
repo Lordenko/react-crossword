@@ -4,10 +4,7 @@ import { useActiveElementIndex, useCrossword, useCrosswordDifficulty, useCrosswo
 import useTimerLogic from './useTimerLogic';
 
 import wordsJsonRaw from '../assets/words.json'
-import { start } from 'repl';
 const wordsJson: CrosswordJson = wordsJsonRaw as CrosswordJson
-
-
 
 const useGameLogic = () => {
     const { activeElementIndex, setActiveElementIndex } = useActiveElementIndex()
