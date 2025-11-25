@@ -10,7 +10,7 @@ export interface WordInputProps {
 
 export interface GameOverPortalProps {
     crosswordStatus: CrosswordStatus,
-    crosswordDifficulty: "easy" | "medium" | "hard",
+    crosswordDifficulty: Difficulty,
     setCrosswordStatus: (crosswordStatus: CrosswordStatus) => void,
     clearInputWords: () => void,
     resetTimer: () => void,
@@ -27,6 +27,17 @@ export interface ErrorLayaoutProps {
 }
 
 // <------ State ------>
+export interface LocalStorageState {
+    players: Player[] | [],
+    currentPlayerId: number | null,
+    addPlayer: (player: Player) => void,
+    setCurrentPlayerId: (playerId: number) => void,
+    updatePlayerScore: (playerId: number, score: number) => void,
+    updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void,
+    getPlayerByName: (playerName: string) => Player | undefined,
+    getPlayerById: (playerId: number) => Player | undefined,
+}
+
 export interface InputWordsState {
     inputWords: string[][],
     setInputWords: (words: string[][]) => void,
@@ -35,8 +46,8 @@ export interface InputWordsState {
 }
 
 export interface CrosswordDifficultyState {
-    crosswordDifficulty: "easy" | "medium" | "hard",
-    setCrosswordDifficulty: (difficulty: "easy" | "medium" | "hard") => void,
+    crosswordDifficulty: Difficulty,
+    setCrosswordDifficulty: (difficulty: Difficulty) => void,
     nextLevelOfDifficulty: () => void
 }
 
@@ -90,6 +101,7 @@ export interface TimerState {
 
 // <------ Other ------>
 export type CrosswordStatus = "solved" | "failed" | "progress"
+export type Difficulty = "easy" | "medium" | "hard"
 
 export interface ElementIndex {
     row: number,
@@ -112,9 +124,13 @@ export type Crossword = {
     clue: Clue;
 };
 
-
-export type Player = {
-    id: number,
+export interface PlayerInfo {
     name: string,
+    difficulty: Difficulty
     score: number
+}
+
+export interface Player {
+    id: number,
+    info: PlayerInfo
 }

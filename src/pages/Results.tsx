@@ -1,21 +1,10 @@
 import { useEffect } from 'react';
 
-import { usePlayers } from '../states/GeneralState'
+import { useLocalStorage } from '../states/LocalStorageState'
 
 
 const Results = () => {
-    const { players, setPlayers } = usePlayers()
-
-    useEffect(() => {
-        // в подальшому буде замінено на запит до бекенду
-        setPlayers([
-            { id: 1, name: "Аліса", score: 120 },
-            { id: 2, name: "Боб", score: 110 },
-            { id: 3, name: "Карл", score: 95 },
-            { id: 4, name: "Даша", score: 80 },
-            { id: 5, name: "Ева", score: 70 },
-        ])
-    }, [])
+    const { players } = useLocalStorage()
 
     return (
         <>
@@ -52,7 +41,7 @@ const Results = () => {
 
                                 {index + 1}
                             </span>
-                            <span className="font-semibold text-gray-800">{player.name}</span>
+                            <span className="font-semibold text-gray-800">{player.info.name}</span>
                         </div>
 
                         <span
@@ -66,7 +55,7 @@ const Results = () => {
                                             ? "text-orange-700"
                                             : "text-blue-700"}
                             `}>
-                            {player.score}
+                            {player.info.score}
                         </span>
                     </div>
                 ))}

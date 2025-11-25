@@ -4,7 +4,7 @@ import Timer from '../components/Other/Timer'
 
 import useGameLogic from '../hooks/useGameLogic'
 import { useEffect } from 'react'
-
+import { useParams } from 'react-router-dom'
 
 const Game = () => {
     const {

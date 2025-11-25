@@ -1,7 +1,13 @@
 import * as Yup from "yup"
 import { Formik, Form, ErrorMessage, Field } from "formik"
 
+import { useLocalStorage } from "../states/LocalStorageState"
+
 const Settings = () => {
+
+
+
+    const { players, currentPlayerId, addPlayer, getPlayerByName, getPlayerById, setCurrentPlayerId, updatePlayerDifficulty } = useLocalStorage()
 
     const schema = Yup.object({
         username: Yup.string()
@@ -21,13 +27,21 @@ const Settings = () => {
 
                 <Formik
                     initialValues={{
-                        username: localStorage.getItem('username') || "",
-                        difficulty: localStorage.getItem('difficulty') || "easy",
+                        username: currentPlayerId !== null ? getPlayerById(currentPlayerId)?.info.name || "" : "",
+                        difficulty: currentPlayerId !== null ? getPlayerById(currentPlayerId)?.info.difficulty || "easy" : "easy",
                     }}
                     validationSchema={schema}
                     onSubmit={(values) => {
-                        localStorage.setItem('username', values.username)
-                        localStorage.setItem('difficulty', values.difficulty)
+                        const player = getPlayerByName(values.username)
+                        if (!player) {
+                            addPlayer({ id: players.length, info: { name: values.username, difficulty: values.difficulty, score: 0 } })
+                        } else {
+                            setCurrentPlayerId(player.id)
+                            if (player.info.difficulty !== values.difficulty) {
+                                updatePlayerDifficulty(player.id, values.difficulty)
+                            }
+                        }
+
                         alert("Settings saved")
                     }}
                 >
@@ -81,7 +95,7 @@ const Settings = () => {
 
                     </Form>
                 </Formik>
-            </div>
+            </div >
 
         </>
     );
