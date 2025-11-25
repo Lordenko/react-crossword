@@ -3,8 +3,9 @@ import FinishGamePortal from '../components/Portals/GameOverPortal'
 import Timer from '../components/Other/Timer'
 
 import useGameLogic from '../hooks/useGameLogic'
+import useTimerLogic from '../hooks/useTimerLogic'
 import { useEffect } from 'react'
-
+import { start } from 'repl'
 
 const Game = () => {
     const {

@@ -1,4 +1,8 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import Layaout from './_Layaout';
+
+import { Player } from '../types';
 
 import { usePlayers } from '../states/GeneralState'
 
