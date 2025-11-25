@@ -22,6 +22,10 @@ export interface TimerProps {
     timer: number,
 }
 
+export interface ErrorLayaoutProps {
+    code: string
+}
+
 // <------ State ------>
 export interface InputWordsState {
     inputWords: string[][],

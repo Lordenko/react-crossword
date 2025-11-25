@@ -11,9 +11,9 @@ const App = () => {
                 <Route path="/game" element={<routes.Game />} />
                 <Route path="/settings" element={<routes.Settings />} />
                 <Route path="/results" element={<routes.Results />} />
+                <Route path="*" element={<routes.Error404 />} />
             </Route>
 
-            <Route path="*" element={<div> 404: no find! </div>} />
         </Routes>
     )
 }
