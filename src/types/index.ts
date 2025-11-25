@@ -4,6 +4,16 @@ export interface PlayerCardProps {
     index?: number
 }
 
+export interface FailedStatePortalProps {
+    resetGame: () => void
+}
+
+export interface SolvedStatePortalProps {
+    resetGame: () => void
+    nextLevelOfDifficulty: () => void
+    crosswordDifficulty: Difficulty
+}
+
 export interface WordInputProps {
     elementIndex: ElementIndex
     activeElementIndex: ElementIndex;

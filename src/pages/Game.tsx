@@ -1,5 +1,5 @@
 import WordInput from '../components/Input/WordInput'
-import FinishGamePortal from '../components/Portals/GameOverPortal'
+import FinishGamePortal from '../components/Portal/GameOverPortal/_GameOverPortal'
 import Timer from '../components/Other/Timer'
 
 import useGameLogic from '../hooks/useGameLogic'
