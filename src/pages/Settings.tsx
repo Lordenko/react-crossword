@@ -2,9 +2,12 @@ import * as Yup from "yup"
 import { Formik, Form, ErrorMessage, Field } from "formik"
 
 import { useLocalStorage } from "../states/LocalStorageState"
+import { useEffect } from "react"
+
+import useSettingsLogic from "../hooks/useSettingsLogic"
 
 const Settings = () => {
-    const { players, currentPlayerId, addPlayer, getPlayerByName, getPlayerById, setCurrentPlayerId, updatePlayerDifficulty } = useLocalStorage()
+    const settingsLogic = useSettingsLogic()
 
     const schema = Yup.object({
         username: Yup.string()
@@ -24,18 +27,18 @@ const Settings = () => {
 
                 <Formik
                     initialValues={{
-                        username: currentPlayerId !== null ? getPlayerById(currentPlayerId)?.info.name || "" : "",
-                        difficulty: currentPlayerId !== null ? getPlayerById(currentPlayerId)?.info.difficulty || "easy" : "easy",
+                        username: settingsLogic.currentPlayerId !== null ? settingsLogic.getPlayerById(settingsLogic.currentPlayerId)?.info.name || "" : "",
+                        difficulty: settingsLogic.currentPlayerId !== null ? settingsLogic.getPlayerById(settingsLogic.currentPlayerId)?.info.difficulty || "easy" : "easy",
                     }}
                     validationSchema={schema}
                     onSubmit={(values) => {
-                        const player = getPlayerByName(values.username)
+                        const player = settingsLogic.getPlayerByName(values.username)
                         if (!player) {
-                            addPlayer({ id: players.length, info: { name: values.username, difficulty: values.difficulty, score: 10 } })
+                            settingsLogic.addPlayer({ id: settingsLogic.players.length, info: { name: values.username, difficulty: values.difficulty, score: 10 } })
                         } else {
-                            setCurrentPlayerId(player.id)
+                            settingsLogic.setCurrentPlayerId(player.id)
                             if (player.info.difficulty !== values.difficulty) {
-                                updatePlayerDifficulty(player.id, values.difficulty)
+                                settingsLogic.updatePlayerDifficulty(player.id, values.difficulty)
                             }
                         }
 

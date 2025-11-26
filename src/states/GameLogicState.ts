@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-import { InputWordsState, TimerState, Crossword, CrosswordDifficultyState, ElementIndex, ActiveElementIndexState, CrosswordState, CrosswordStatusState, Player, PlayersState } from "../types"
+import { PlayerState, InputWordsState, TimerState, Crossword, CrosswordDifficultyState, ElementIndex, ActiveElementIndexState, CrosswordState, CrosswordStatusState, Player, PlayersState } from "../types"
 
 export const useInputWords = create<InputWordsState>((set) => ({
     inputWords: Array(3).fill(null).map(() => Array(3).fill("")),
@@ -31,20 +31,6 @@ export const useCrosswordStatus = create<CrosswordStatusState>((set) => ({
         set({ crosswordStatus })
 }))
 
-export const useCrosswordDifficulty = create<CrosswordDifficultyState>((set) => ({
-    crosswordDifficulty: "easy",
-    setCrosswordDifficulty: (crosswordDifficulty: "easy" | "medium" | "hard") =>
-        set({ crosswordDifficulty }),
-    nextLevelOfDifficulty: () => set((state) => {
-        const nextLevel: Record<"easy" | "medium" | "hard", "easy" | "medium" | "hard"> = {
-            easy: "medium",
-            medium: "hard",
-            hard: "hard",
-        }
-        return { crosswordDifficulty: nextLevel[state.crosswordDifficulty] }
-    })
-}))
-
 export const useActiveElementIndex = create<ActiveElementIndexState>((set) => ({
     activeElementIndex: { row: -1, col: -1 },
     setActiveElementIndex: (activeElementIndex: ElementIndex) =>
@@ -65,4 +51,14 @@ export const useTimer = create<TimerState>((set) => ({
     startTimer: () => set({ timerStatus: true }),
     stopTimer: () => set({ timerStatus: false }),
     resetTimer: () => set((state) => ({ currentTimer: state.timer }))
+}))
+
+export const usePlayer = create<PlayerState>((set) => ({
+    username: "",
+    difficulty: "easy",
+    score: 0,
+    setUsername: (username: string) => set({ username }),
+    setDifficulty: (difficulty: "easy" | "medium" | "hard") => set({ difficulty }),
+    setScore: (score: number) => set({ score }),
+
 }))

@@ -4,14 +4,27 @@ export interface PlayerCardProps {
     index?: number
 }
 
-export interface FailedStatePortalProps {
-    resetGame: () => void
+export interface PreStartPortalProps {
+    currentPlayerId: number | null
 }
 
-export interface SolvedStatePortalProps {
+export interface StatusStatePortalProps {
     resetGame: () => void
-    nextLevelOfDifficulty: () => void
+}
+export interface FailedStatePortalProps extends StatusStatePortalProps { }
+
+export interface SolvedStatePortalProps extends StatusStatePortalProps {
+    difficulty: Difficulty
+
+    timer: number
+    score: number
     crosswordDifficulty: Difficulty
+    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
+    calcScore: (timerSeconds: number, difficulty: Difficulty) => number
+
+    currentPlayerId: number | null
+    updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void
+    updatePlayerScore: (playerId: number, score: number) => void
 }
 
 export interface WordInputProps {
@@ -30,7 +43,18 @@ export interface GameOverPortalProps {
     clearInputWords: () => void,
     resetTimer: () => void,
     startTimer: () => void,
-    nextLevelOfDifficulty: () => void
+    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
+
+    difficulty: Difficulty
+
+    timer: number
+    score: number
+    calcScore: (timerSeconds: number, difficulty: Difficulty) => number
+    resetGame: () => void
+
+    currentPlayerId: number | null
+    updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void
+    updatePlayerScore: (playerId: number, score: number) => void
 }
 
 export interface TimerProps {
@@ -42,6 +66,15 @@ export interface ErrorLayaoutProps {
 }
 
 // <------ State ------>
+export interface PlayerState {
+    username: string,
+    difficulty: Difficulty,
+    score: number
+    setUsername: (username: string) => void,
+    setDifficulty: (difficulty: Difficulty) => void,
+    setScore: (score: number) => void
+}
+
 export interface LocalStorageState {
     players: Player[] | [],
     currentPlayerId: number | null,
@@ -52,6 +85,8 @@ export interface LocalStorageState {
     updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void,
     getPlayerByName: (playerName: string) => Player | undefined,
     getPlayerById: (playerId: number) => Player | undefined,
+
+
 }
 
 export interface InputWordsState {
@@ -64,7 +99,7 @@ export interface InputWordsState {
 export interface CrosswordDifficultyState {
     crosswordDifficulty: Difficulty,
     setCrosswordDifficulty: (difficulty: Difficulty) => void,
-    nextLevelOfDifficulty: () => void
+    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
 }
 
 export interface CrosswordState {
@@ -142,7 +177,7 @@ export type Crossword = {
 
 export interface PlayerInfo {
     name: string,
-    difficulty: Difficulty
+    difficulty: Difficulty,
     score: number
 }
 

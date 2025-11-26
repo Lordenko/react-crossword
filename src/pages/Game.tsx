@@ -1,46 +1,26 @@
 import WordInput from '../components/Input/WordInput'
 import FinishGamePortal from '../components/Portal/GameOverPortal/_GameOverPortal'
+import PreStartPortal from '../components/Portal/PreStartPortal/_PreStartPortal'
 import Timer from '../components/Other/Timer'
 
 import useGameLogic from '../hooks/useGameLogic'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 
 const Game = () => {
-    const {
-        crossword,
-        crosswordStatus,
-        setCrosswordStatus,
-
-        inputWords,
-        setInputWord,
-        clearInputWords,
-
-        activeElementIndex,
-        setActiveElementIndex,
-
-        timer,
-        startTimer,
-        resetTimer,
-
-        nextLevelOfDifficulty,
-        crosswordDifficulty
-    } = useGameLogic()
-
-    useEffect(() => {
-        startTimer()
-    }, [])
+    const GameLogic = useGameLogic()
 
     return (
         <>
+            <PreStartPortal currentPlayerId={GameLogic.currentPlayerId} />
 
             <div>
-                <p>username = {localStorage.getItem('username')}</p>
-                <p>difficulty = {localStorage.getItem('difficulty')}</p>
+                <p>username = {GameLogic.username ? GameLogic.username : "guest"}</p>
+                <p>difficulty = {GameLogic.difficulty}</p>
+                <p>score = {GameLogic.score}</p>
             </div>
 
             <Timer
-                timer={timer}
+                timer={GameLogic.timer}
             />
 
             <div className="grid grid-cols-3 gap-2 w-80 sm:w-96 mx-auto mt-8">
@@ -52,11 +32,11 @@ const Game = () => {
                         >
                             <WordInput
                                 elementIndex={{ row: i, col: j }}
-                                activeElementIndex={activeElementIndex}
-                                setActiveElementIndex={setActiveElementIndex}
-                                inputWords={inputWords}
-                                setInputWord={setInputWord}
-                                crosswordWords={crossword.grid}
+                                activeElementIndex={GameLogic.activeElementIndex}
+                                setActiveElementIndex={GameLogic.setActiveElementIndex}
+                                inputWords={GameLogic.inputWords}
+                                setInputWord={GameLogic.setInputWord}
+                                crosswordWords={GameLogic.crossword.grid}
                             />
                         </div>
                     ))
@@ -71,7 +51,7 @@ const Game = () => {
                     <div className="bg-blue-50 p-4 rounded-2xl shadow-sm border border-blue-100">
                         <h3 className="font-semibold text-blue-700 mb-2 text-center sm:text-left">Horizontal</h3>
                         <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm sm:text-base">
-                            {crossword.clue.Horizontal.map((clue, index) => (
+                            {GameLogic.crossword.clue.Horizontal.map((clue, index) => (
                                 <li key={index}>{clue}</li>
                             ))}
                         </ul>
@@ -81,7 +61,7 @@ const Game = () => {
                     <div className="bg-green-50 p-4 rounded-2xl shadow-sm border border-green-100">
                         <h3 className="font-semibold text-green-700 mb-2 text-center sm:text-left">Vertical</h3>
                         <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm sm:text-base">
-                            {crossword.clue.Vertical.map((clue, index) => (
+                            {GameLogic.crossword.clue.Vertical.map((clue, index) => (
                                 <li key={index}>{clue}</li>
                             ))}
                         </ul>
@@ -92,16 +72,28 @@ const Game = () => {
 
             {/* Congratulations message */}
             <FinishGamePortal
-                crosswordStatus={crosswordStatus}
-                setCrosswordStatus={setCrosswordStatus}
 
-                clearInputWords={clearInputWords}
+                difficulty={GameLogic.difficulty}
 
-                resetTimer={resetTimer}
-                startTimer={startTimer}
+                crosswordStatus={GameLogic.crosswordStatus}
+                setCrosswordStatus={GameLogic.setCrosswordStatus}
 
-                crosswordDifficulty={crosswordDifficulty}
-                nextLevelOfDifficulty={nextLevelOfDifficulty}
+                clearInputWords={GameLogic.clearInputWords}
+
+                resetTimer={GameLogic.resetTimer}
+                startTimer={GameLogic.startTimer}
+
+                crosswordDifficulty={GameLogic.difficulty}
+                getNextLevelOfDifficulty={GameLogic.getNextLevelOfDifficulty}
+
+                score={GameLogic.score}
+                timer={GameLogic.timer}
+                calcScore={GameLogic.calcScore}
+                resetGame={GameLogic.resetGame}
+
+                currentPlayerId={GameLogic.currentPlayerId}
+                updatePlayerDifficulty={GameLogic.updatePlayerDifficulty}
+                updatePlayerScore={GameLogic.updatePlayerScore}
             />
         </>
     );

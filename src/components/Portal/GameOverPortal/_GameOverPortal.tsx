@@ -11,25 +11,32 @@ const GameOverPortal = (props: GameOverPortalProps) => {
         || props.crosswordStatus !== "solved"
         && props.crosswordStatus !== "failed") return null;
 
-    const resetGame = () => {
-        props.clearInputWords()
-        props.setCrosswordStatus("progress")
-        props.resetTimer()
-        props.startTimer()
-    }
-
     return ReactDOM.createPortal(
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50 animate-fade-in">
             <div className="bg-white rounded-2xl p-8 shadow-2xl text-center flex flex-col items-center gap-6 max-w-sm w-[90%]">
 
                 {/* FAILED STATE */}
                 {props.crosswordStatus === "failed" && (
-                    <FailedState resetGame={resetGame} />
+                    <FailedState
+                        resetGame={props.resetGame}
+                    />
                 )}
 
                 {/* SOLVED STATE */}
                 {props.crosswordStatus === "solved" && (
-                    <SolvedState resetGame={resetGame} nextLevelOfDifficulty={props.nextLevelOfDifficulty} crosswordDifficulty={props.crosswordDifficulty} />
+                    <SolvedState
+                        difficulty={props.difficulty}
+                        timer={props.timer}
+                        score={props.score}
+                        resetGame={props.resetGame}
+                        getNextLevelOfDifficulty={props.getNextLevelOfDifficulty}
+                        crosswordDifficulty={props.crosswordDifficulty}
+                        calcScore={props.calcScore}
+
+                        currentPlayerId={props.currentPlayerId}
+                        updatePlayerDifficulty={props.updatePlayerDifficulty}
+                        updatePlayerScore={props.updatePlayerScore}
+                    />
                 )}
             </div>
         </div>,
