@@ -1,6 +1,6 @@
 import GameOverPortal from '../components/Game/Portal/GameOverPortal/__GameOverPortal'
 import PreStartPortal from '../components/Game/Portal/PreStartPortal/__PreStartPortal'
-import Timer from '../components/Other/Timer'
+import Timer from '../components/Game/Timer'
 import ClueSection from '../components/Game/Clue/_ClueSection'
 import CrosswordBoard from '../components/Game/CrosswordBoard'
 import PlayerInfo from '../components/Game/PlayerInfo'
