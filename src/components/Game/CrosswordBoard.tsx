@@ -1,6 +1,6 @@
 import WordInput from "./WordInput"
 
-import { CrosswordBoardProps } from "../../types"
+import { CrosswordBoardProps } from "../../types/props"
 
 const CrosswordBoard = (props: CrosswordBoardProps) => {
     return (

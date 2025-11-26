@@ -1,4 +1,4 @@
-import { PlayerCardProps } from "../../types";
+import { PlayerCardProps } from "../../types/props";
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player, index = -1 }) => {
     return (

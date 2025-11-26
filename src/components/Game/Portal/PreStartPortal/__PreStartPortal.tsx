@@ -1,9 +1,5 @@
-import ReactDOM from "react-dom";
-
-import { PreStartPortalProps } from "../../../../types";
-
+import { PreStartPortalProps } from "../../../../types/props";
 import { useNavigate } from "react-router-dom";
-
 import ModalLayaout from "../../../Layaout/ModalLayaout";
 
 const PreStartPortal = (props: PreStartPortalProps) => {

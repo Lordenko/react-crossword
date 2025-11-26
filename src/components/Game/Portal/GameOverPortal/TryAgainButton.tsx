@@ -1,4 +1,4 @@
-import { TryAgainButtonProps } from "../../../../types";
+import { TryAgainButtonProps } from "../../../../types/props";
 
 const TryAgainButton = (props: TryAgainButtonProps) => {
     return (

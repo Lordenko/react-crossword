@@ -1,4 +1,4 @@
-import { ScoreBannerProps } from "../../../../types"
+import { ScoreBannerProps } from "../../../../types/props"
 
 const ScoreBanner = (props: ScoreBannerProps) => {
     return (

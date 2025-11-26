@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SolvedStatePortalProps } from "../../../../types";
+import { SolvedStatePortalProps } from "../../../../types/props";
 
 import TryAgainButton from "./TryAgainButton";
 import NextDifficultyButton from "./NextDifficultyButton";
@@ -12,7 +12,7 @@ const SolvedState = (props: SolvedStatePortalProps) => {
         props.updatePlayerScore(
             props.currentPlayerId,
             props.score + props.calcScore(props.timer, props.difficulty))
-    }, [])
+    }, [props.calcScore, props.updatePlayerScore])
 
     if (props.crosswordStatus !== "solved") return null
 

@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 
-import { GameOverPortalProps } from "../../../../types";
+import { GameOverPortalProps } from "../../../../types/props";
 
 import FailedState from "./_FailedState";
 import SolvedState from "./_SolvedState";

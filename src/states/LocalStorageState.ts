@@ -1,6 +1,8 @@
 import { create } from "zustand"
 
-import { Player, LocalStorageState, Difficulty } from "../types"
+import { LocalStorageState } from "../types/states"
+import { Difficulty } from "../types/enums";
+import { Player } from "../types/others";
 
 export const useLocalStorage = create<LocalStorageState>((set, get) => ({
     players: (JSON.parse(localStorage.getItem("players") || "[]") as Player[]),

@@ -1,4 +1,4 @@
-import { FailedStatePortalProps } from "../../../../types";
+import { FailedStatePortalProps } from "../../../../types/props";
 
 import TryAgainButton from "./TryAgainButton";
 

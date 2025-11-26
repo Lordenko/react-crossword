@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 
-import { ModalLayaoutProps } from "../../types";
+import { ModalLayaoutProps } from "../../types/props";
 
 const ModalLayaout = ({ children }: ModalLayaoutProps) => {
     const modalRoot = document.getElementById("modal-root");

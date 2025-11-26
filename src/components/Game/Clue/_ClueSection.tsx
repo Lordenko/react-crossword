@@ -1,4 +1,4 @@
-import { ClueProps } from "../../../types"
+import { ClueProps } from "../../../types/props"
 
 import HorisontalClue from "./HorisontalClue"
 import VerticalClue from "./VerticalClue"

@@ -1,4 +1,4 @@
-import { ErrorLayaoutProps } from "../../types";
+import { ErrorLayaoutProps } from "../../types/props";
 
 const ErrorLayaout = (props: ErrorLayaoutProps) => {
     return (

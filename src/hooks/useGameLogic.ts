@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
-import { CrosswordJson, Difficulty } from '../types';
-import { useActiveElementIndex, useCrossword, useCrosswordStatus, useInputWords, useTimer } from '../states/GameLogicState'
+import { Difficulty } from '../types/enums';
+import { CrosswordJson } from '../types/others'
+import { useActiveElementIndex, useCrossword, useCrosswordStatus, useInputWords } from '../states/GameLogicState'
 import useTimerLogic from './useTimerLogic';
 import { usePlayer } from '../states/GameLogicState';
 

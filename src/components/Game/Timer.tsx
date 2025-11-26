@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react';
-import { TimerProps } from '../../types/index';
+import { TimerProps } from '../../types/props';
 
 const Timer = (props: TimerProps) => {
     return (

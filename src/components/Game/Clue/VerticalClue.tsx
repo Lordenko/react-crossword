@@ -1,4 +1,4 @@
-import { ClueListProps } from "../../../types"
+import { ClueListProps } from "../../../types/props"
 
 const VerticalClue = (props: ClueListProps) => {
     return (

@@ -1,4 +1,4 @@
-import { PlayerInfoProps } from "../../types"
+import { PlayerInfoProps } from "../../types/props"
 
 const PlayerInfo = (props: PlayerInfoProps) => {
     return (

@@ -1,6 +1,7 @@
 import { create } from "zustand"
 
-import { PlayerState, InputWordsState, TimerState, Crossword, CrosswordDifficultyState, ElementIndex, ActiveElementIndexState, CrosswordState, CrosswordStatusState, Player, PlayersState } from "../types"
+import { PlayerState, InputWordsState, TimerState, ActiveElementIndexState, CrosswordState, CrosswordStatusState } from "../types/states"
+import { Crossword, ElementIndex } from "../types/others"
 
 export const useInputWords = create<InputWordsState>((set) => ({
     inputWords: Array(3).fill(null).map(() => Array(3).fill("")),

@@ -1,4 +1,4 @@
-import { NextDifficultyButtonProps } from "../../../../types";
+import { NextDifficultyButtonProps } from "../../../../types/props";
 
 const NextDifficultyButton = (props: NextDifficultyButtonProps) => {
 
