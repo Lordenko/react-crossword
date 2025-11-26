@@ -1,107 +1,57 @@
-import WordInput from '../components/Input/WordInput'
-import FinishGamePortal from '../components/Portals/GameOverPortal'
-import Timer from '../components/Other/Timer'
+import GameOverPortal from '../components/Game/Portal/GameOverPortal/__GameOverPortal'
+import PreStartPortal from '../components/Game/Portal/PreStartPortal/__PreStartPortal'
+import Timer from '../components/Game/Timer'
+import ClueSection from '../components/Game/Clue/_ClueSection'
+import CrosswordBoard from '../components/Game/CrosswordBoard'
+import PlayerInfo from '../components/Game/PlayerInfo'
 
 import useGameLogic from '../hooks/useGameLogic'
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 
 const Game = () => {
-    const {
-        crossword,
-        crosswordStatus,
-        setCrosswordStatus,
-
-        inputWords,
-        setInputWord,
-        clearInputWords,
-
-        activeElementIndex,
-        setActiveElementIndex,
-
-        timer,
-        startTimer,
-        resetTimer,
-
-        nextLevelOfDifficulty,
-        crosswordDifficulty
-    } = useGameLogic()
-
-    useEffect(() => {
-        startTimer()
-    }, [])
+    const GameLogic = useGameLogic()
 
     return (
         <>
+            <PreStartPortal currentPlayerId={GameLogic.currentPlayerId} />
 
-            <div>
-                <p>username = {localStorage.getItem('username')}</p>
-                <p>difficulty = {localStorage.getItem('difficulty')}</p>
-            </div>
-
-            <Timer
-                timer={timer}
+            <PlayerInfo
+                username={GameLogic.username}
+                difficulty={GameLogic.difficulty}
+                score={GameLogic.score}
             />
 
-            <div className="grid grid-cols-3 gap-2 w-80 sm:w-96 mx-auto mt-8">
-                {Array.from({ length: 3 }).map((_, i) =>
-                    Array.from({ length: 3 }).map((_, j) => (
-                        <div
-                            key={`${i}-${j}`}
-                            className="bg-white border border-gray-300 rounded-xl shadow-sm aspect-square flex items-center justify-center text-lg font-semibold transition-all"
-                        >
-                            <WordInput
-                                elementIndex={{ row: i, col: j }}
-                                activeElementIndex={activeElementIndex}
-                                setActiveElementIndex={setActiveElementIndex}
-                                inputWords={inputWords}
-                                setInputWord={setInputWord}
-                                crosswordWords={crossword.grid}
-                            />
-                        </div>
-                    ))
-                )}
-            </div>
+            <Timer
+                timer={GameLogic.timer}
+            />
 
-            {/* Clues Section */}
-            <div className="mt-8 w-80 sm:w-96 mx-auto space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <CrosswordBoard
+                activeElementIndex={GameLogic.activeElementIndex}
+                setActiveElementIndex={GameLogic.setActiveElementIndex}
+                inputWords={GameLogic.inputWords}
+                setInputWord={GameLogic.setInputWord}
+                crosswordWords={GameLogic.crossword.grid}
+            />
 
-                    {/* Horizontal Clues */}
-                    <div className="bg-blue-50 p-4 rounded-2xl shadow-sm border border-blue-100">
-                        <h3 className="font-semibold text-blue-700 mb-2 text-center sm:text-left">Horizontal</h3>
-                        <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm sm:text-base">
-                            {crossword.clue.Horizontal.map((clue, index) => (
-                                <li key={index}>{clue}</li>
-                            ))}
-                        </ul>
-                    </div>
+            <ClueSection
+                clueList={GameLogic.crossword.clue}
+            />
 
-                    {/* Vertical Clues */}
-                    <div className="bg-green-50 p-4 rounded-2xl shadow-sm border border-green-100">
-                        <h3 className="font-semibold text-green-700 mb-2 text-center sm:text-left">Vertical</h3>
-                        <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm sm:text-base">
-                            {crossword.clue.Vertical.map((clue, index) => (
-                                <li key={index}>{clue}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <GameOverPortal
+                difficulty={GameLogic.difficulty}
+                getNextLevelOfDifficulty={GameLogic.getNextLevelOfDifficulty}
+                crosswordStatus={GameLogic.crosswordStatus}
+                setCrosswordStatus={GameLogic.setCrosswordStatus}
 
+                clearInputWords={GameLogic.clearInputWords}
 
-            {/* Congratulations message */}
-            <FinishGamePortal
-                crosswordStatus={crosswordStatus}
-                setCrosswordStatus={setCrosswordStatus}
+                score={GameLogic.score}
+                timer={GameLogic.timer}
+                calcScore={GameLogic.calcScore}
+                resetGame={GameLogic.resetGame}
 
-                clearInputWords={clearInputWords}
-
-                resetTimer={resetTimer}
-                startTimer={startTimer}
-
-                crosswordDifficulty={crosswordDifficulty}
-                nextLevelOfDifficulty={nextLevelOfDifficulty}
+                currentPlayerId={GameLogic.currentPlayerId}
+                updatePlayerDifficulty={GameLogic.updatePlayerDifficulty}
+                updatePlayerScore={GameLogic.updatePlayerScore}
             />
         </>
     );

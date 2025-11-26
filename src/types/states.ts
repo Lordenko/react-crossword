@@ -1,37 +1,16 @@
-// <------ Props ------>
-export interface PlayerCardProps {
-    player: Player
-    index?: number
+import { ElementIndex, Player, Crossword } from "./others";
+import { Difficulty, CrosswordStatus } from "./enums";
+
+
+export interface PlayerState {
+    username: string,
+    difficulty: Difficulty,
+    score: number
+    setUsername: (username: string) => void,
+    setDifficulty: (difficulty: Difficulty) => void,
+    setScore: (score: number) => void
 }
 
-export interface WordInputProps {
-    elementIndex: ElementIndex
-    activeElementIndex: ElementIndex;
-    setActiveElementIndex: (elementIndex: ElementIndex) => void;
-    inputWords: string[][];
-    setInputWord: (elementIndex: ElementIndex, value: string) => void;
-    crosswordWords: string[][]
-}
-
-export interface GameOverPortalProps {
-    crosswordStatus: CrosswordStatus,
-    crosswordDifficulty: Difficulty,
-    setCrosswordStatus: (crosswordStatus: CrosswordStatus) => void,
-    clearInputWords: () => void,
-    resetTimer: () => void,
-    startTimer: () => void,
-    nextLevelOfDifficulty: () => void
-}
-
-export interface TimerProps {
-    timer: number,
-}
-
-export interface ErrorLayaoutProps {
-    code: string
-}
-
-// <------ State ------>
 export interface LocalStorageState {
     players: Player[] | [],
     currentPlayerId: number | null,
@@ -42,6 +21,8 @@ export interface LocalStorageState {
     updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void,
     getPlayerByName: (playerName: string) => Player | undefined,
     getPlayerById: (playerId: number) => Player | undefined,
+
+
 }
 
 export interface InputWordsState {
@@ -54,7 +35,7 @@ export interface InputWordsState {
 export interface CrosswordDifficultyState {
     crosswordDifficulty: Difficulty,
     setCrosswordDifficulty: (difficulty: Difficulty) => void,
-    nextLevelOfDifficulty: () => void
+    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
 }
 
 export interface CrosswordState {
@@ -103,40 +84,4 @@ export interface TimerState {
     startTimer: () => void,
     stopTimer: () => void,
     resetTimer: () => void
-}
-
-// <------ Other ------>
-export type CrosswordStatus = "solved" | "failed" | "progress"
-export type Difficulty = "easy" | "medium" | "hard"
-
-export interface ElementIndex {
-    row: number,
-    col: number
-}
-
-export type CrosswordJson = {
-    easy: Crossword[];
-    medium: Crossword[];
-    hard: Crossword[];
-};
-
-export type Clue = {
-    Horizontal: string[];
-    Vertical: string[];
-};
-
-export type Crossword = {
-    grid: string[][];
-    clue: Clue;
-};
-
-export interface PlayerInfo {
-    name: string,
-    difficulty: Difficulty
-    score: number
-}
-
-export interface Player {
-    id: number,
-    info: PlayerInfo
 }

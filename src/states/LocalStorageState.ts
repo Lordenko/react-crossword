@@ -1,12 +1,14 @@
 import { create } from "zustand"
 
-import { Player, LocalStorageState, Difficulty } from "../types"
+import { LocalStorageState } from "../types/states"
+import { Difficulty } from "../types/enums";
+import { Player } from "../types/others";
 
 export const useLocalStorage = create<LocalStorageState>((set, get) => ({
     players: (JSON.parse(localStorage.getItem("players") || "[]") as Player[]),
     currentPlayerId: (JSON.parse(localStorage.getItem("currentPlayerId") || "null") as number | null),
 
-    setCurrentPlayerId: (playerId: number) => set((state) => {
+    setCurrentPlayerId: (playerId: number) => set(() => {
         localStorage.setItem("currentPlayerId", JSON.stringify(playerId));
         return { currentPlayerId: playerId }
     }),
@@ -40,11 +42,10 @@ export const useLocalStorage = create<LocalStorageState>((set, get) => ({
         localStorage.setItem("players", JSON.stringify(updatedPlayers));
         return { players: updatedPlayers };
     }),
-
     getPlayerByName: (playerName: string) => {
         return get().players.find((player: Player) => player.info.name === playerName)
     },
     getPlayerById: (playerId: number) => {
         return get().players.find((player: Player) => player.id === playerId)
-    }
+    },
 }))

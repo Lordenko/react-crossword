@@ -1,9 +1,12 @@
 import { useEffect } from 'react'
-import { CrosswordJson } from '../types';
-import { useActiveElementIndex, useCrossword, useCrosswordDifficulty, useCrosswordStatus, useInputWords, useTimer } from '../states/GameLogicState'
+import { Difficulty } from '../types/enums';
+import { CrosswordJson } from '../types/others'
+import { useActiveElementIndex, useCrossword, useCrosswordStatus, useInputWords } from '../states/GameLogicState'
 import useTimerLogic from './useTimerLogic';
+import { usePlayer } from '../states/GameLogicState';
 
 import wordsJsonRaw from '../assets/words.json'
+import { useLocalStorage } from '../states/LocalStorageState';
 const wordsJson: CrosswordJson = wordsJsonRaw as CrosswordJson
 
 const useGameLogic = () => {
@@ -11,7 +14,19 @@ const useGameLogic = () => {
     const { inputWords, setInputWord, clearInputWords } = useInputWords()
     const { crossword, setCrossword } = useCrossword()
     const { crosswordStatus, setCrosswordStatus } = useCrosswordStatus()
-    const { crosswordDifficulty, nextLevelOfDifficulty, setCrosswordDifficulty } = useCrosswordDifficulty()
+    const { players, currentPlayerId, getPlayerById, updatePlayerDifficulty, updatePlayerScore } = useLocalStorage()
+
+    const { username, difficulty, score, setUsername, setDifficulty, setScore } = usePlayer()
+
+    useEffect(() => {
+        if (currentPlayerId === null) return
+        const player = getPlayerById(currentPlayerId)
+        if (!player) return
+
+        setUsername(player.info.name)
+        setDifficulty(player.info.difficulty)
+        setScore(player.info.score)
+    }, [JSON.stringify(players)])
 
     const {
         currentTimer: timer,
@@ -22,18 +37,12 @@ const useGameLogic = () => {
     } = useTimerLogic()
 
     useEffect(() => {
-        setCrosswordDifficulty(
-            localStorage.getItem('difficulty') as "easy" | "medium" | "hard" || "easy"
-        )
-    }, [])
-
-    useEffect(() => {
-        setTimer(calcTimeFromDifficulty(crosswordDifficulty))
-    }, [crosswordDifficulty])
+        setTimer(calcTimeFromDifficulty(difficulty))
+    }, [difficulty])
 
     useEffect(() => {
         if (crosswordStatus === "progress") {
-            setCrossword(wordsJson[crosswordDifficulty][Math.floor(Math.random() * wordsJson[crosswordDifficulty].length)])
+            setCrossword(wordsJson[difficulty][Math.floor(Math.random() * wordsJson[difficulty].length)])
         }
     }, [crosswordStatus])
 
@@ -51,9 +60,30 @@ const useGameLogic = () => {
     }, [timer])
 
     useEffect(() => {
-        localStorage.setItem('difficulty', crosswordDifficulty)
-    }, [crosswordDifficulty])
+        if (currentPlayerId === null) return
+        startTimer()
+    }, [])
 
+    const calcScore = (timerSeconds: number, difficulty: Difficulty) => {
+        const mult = { easy: 1, medium: 2, hard: 3 }[difficulty];
+        return Math.round(timerSeconds * mult);
+    }
+
+    const resetGame = () => {
+        clearInputWords()
+        setCrosswordStatus("progress")
+        resetTimer()
+        startTimer()
+    }
+
+    const getNextLevelOfDifficulty = (difficulty: Difficulty): Difficulty => {
+        const nextLevel = {
+            easy: "medium",
+            medium: "hard",
+            hard: "hard",
+        }
+        return nextLevel[difficulty] as Difficulty
+    }
 
     return {
         crossword,
@@ -72,8 +102,17 @@ const useGameLogic = () => {
         stopTimer,
         resetTimer,
 
-        crosswordDifficulty,
-        nextLevelOfDifficulty
+        username,
+        difficulty,
+        score,
+        getNextLevelOfDifficulty,
+
+        calcScore,
+        resetGame,
+        setScore,
+
+        currentPlayerId,
+        updatePlayerDifficulty, updatePlayerScore
     }
 }
 
@@ -84,15 +123,9 @@ const checkCrossword = (inputWords: string[][], crosswordWords: string[][]) => {
     else return false
 }
 
-const calcTimeFromDifficulty = (difficulty: "easy" | "medium" | "hard") => {
-    switch (difficulty) {
-        case "easy":
-            return (1 / 1) * 300
-        case "medium":
-            return (1 / 2) * 300
-        case "hard":
-            return (1 / 3) * 300
-    }
+const calcTimeFromDifficulty = (difficulty: Difficulty) => {
+    const mult = { easy: 1 / 1, medium: 1 / 2, hard: 1 / 3 }[difficulty];
+    return mult * 300
 }
 
 export default useGameLogic
