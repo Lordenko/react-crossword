@@ -1,4 +1,4 @@
-# 🧩 Crossword Game
+# 🧩 Crossword 3х3
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/Lordenko/react-crossword)](https://github.com/Lordenko/react-crossword/commits/main)
