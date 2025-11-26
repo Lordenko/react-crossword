@@ -28,6 +28,10 @@ const useGameLogic = () => {
         setScore(player.info.score)
     }, [JSON.stringify(players)])
 
+    useEffect(() => {
+
+    }, [difficulty])
+
     const {
         currentTimer: timer,
         setTimer,
@@ -41,17 +45,18 @@ const useGameLogic = () => {
     }, [difficulty])
 
     useEffect(() => {
-        if (crosswordStatus === "progress") {
-            setCrossword(wordsJson[difficulty][Math.floor(Math.random() * wordsJson[difficulty].length)])
-        }
-    }, [crosswordStatus])
+        if (crosswordStatus !== "progress") return
+
+        setCrossword(wordsJson[difficulty][Math.floor(Math.random() * wordsJson[difficulty].length)])
+    }, [crosswordStatus, difficulty])
 
     useEffect(() => {
+        if (crosswordStatus !== "progress") return;
         if (checkCrossword(inputWords, crossword.grid)) {
             stopTimer()
             setCrosswordStatus("solved")
         }
-    }, [inputWords, crossword])
+    }, [inputWords, crossword, crosswordStatus])
 
     useEffect(() => {
         if (timer <= 0) {
