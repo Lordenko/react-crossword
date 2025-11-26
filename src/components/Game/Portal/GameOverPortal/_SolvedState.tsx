@@ -12,7 +12,7 @@ const SolvedState = (props: SolvedStatePortalProps) => {
         props.updatePlayerScore(
             props.currentPlayerId,
             props.score + props.calcScore(props.timer, props.difficulty))
-    }, [props.calcScore, props.updatePlayerScore])
+    }, [])
 
     if (props.crosswordStatus !== "solved") return null
 
