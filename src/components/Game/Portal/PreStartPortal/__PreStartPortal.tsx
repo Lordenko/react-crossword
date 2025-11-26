@@ -1,19 +1,18 @@
 import ReactDOM from "react-dom";
 
-import { PreStartPortalProps } from "../../../types";
+import { PreStartPortalProps } from "../../../../types";
 
 import { useNavigate } from "react-router-dom";
+
+import ModalLayaout from "../../../Layaout/ModalLayaout";
 
 const PreStartPortal = (props: PreStartPortalProps) => {
     const navigate = useNavigate()
 
     if (props.currentPlayerId !== null) return null
-    const modalRoot = document.getElementById("modal-root");
-    if (!modalRoot) return null;
 
-
-    return ReactDOM.createPortal(
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50 animate-fade-in">
+    return (
+        <ModalLayaout>
             <div className="bg-white rounded-2xl p-8 shadow-2xl text-center flex flex-col items-center gap-6 max-w-sm w-[90%]">
 
                 <h2 className="text-2xl font-bold text-gray-800">
@@ -31,10 +30,8 @@ const PreStartPortal = (props: PreStartPortalProps) => {
                     Go to Settings
                 </button>
             </div>
-        </div>,
-        modalRoot
-    );
-
+        </ModalLayaout>
+    )
 }
 
 export default PreStartPortal

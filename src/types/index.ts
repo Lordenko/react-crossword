@@ -1,4 +1,49 @@
 // <------ Props ------>
+export interface ClueListProps {
+    clueList: string[]
+}
+
+export interface ModalLayaoutProps {
+    children: React.ReactNode;
+}
+
+export interface ScoreBannerProps {
+    score: number
+    timer: number
+    crosswordDifficulty: Difficulty
+    calcScore: (timerSeconds: number, difficulty: Difficulty) => number
+}
+
+export interface NextDifficultyButtonProps {
+    crosswordDifficulty: Difficulty
+    currentPlayerId: number | null
+    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
+    updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void
+    resetGame: () => void
+}
+
+export interface TryAgainButtonProps {
+    resetGame: () => void
+}
+
+export interface ClueProps {
+    clueList: Clue
+}
+
+export interface CrosswordBoardProps {
+    activeElementIndex: ElementIndex;
+    setActiveElementIndex: (elementIndex: ElementIndex) => void;
+    inputWords: string[][];
+    setInputWord: (elementIndex: ElementIndex, value: string) => void;
+    crosswordWords: string[][]
+}
+
+export interface PlayerInfoProps {
+    username: string,
+    difficulty: Difficulty,
+    score: number
+}
+
 export interface PlayerCardProps {
     player: Player
     index?: number
@@ -10,6 +55,7 @@ export interface PreStartPortalProps {
 
 export interface StatusStatePortalProps {
     resetGame: () => void
+    crosswordStatus: CrosswordStatus
 }
 export interface FailedStatePortalProps extends StatusStatePortalProps { }
 
@@ -18,7 +64,6 @@ export interface SolvedStatePortalProps extends StatusStatePortalProps {
 
     timer: number
     score: number
-    crosswordDifficulty: Difficulty
     getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
     calcScore: (timerSeconds: number, difficulty: Difficulty) => number
 
@@ -37,15 +82,12 @@ export interface WordInputProps {
 }
 
 export interface GameOverPortalProps {
-    crosswordStatus: CrosswordStatus,
-    crosswordDifficulty: Difficulty,
-    setCrosswordStatus: (crosswordStatus: CrosswordStatus) => void,
-    clearInputWords: () => void,
-    resetTimer: () => void,
-    startTimer: () => void,
-    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
-
     difficulty: Difficulty
+    getNextLevelOfDifficulty: (difficulty: Difficulty) => Difficulty
+    crosswordStatus: CrosswordStatus,
+    setCrosswordStatus: (crosswordStatus: CrosswordStatus) => void,
+
+    clearInputWords: () => void,
 
     timer: number
     score: number
