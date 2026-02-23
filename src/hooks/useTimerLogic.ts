@@ -9,7 +9,7 @@ const useTimerLogic = () => {
 
     useEffect(() => {
         setCurrentTimer(timer)
-    }, [timer])
+    }, [timer, setCurrentTimer])
 
     useEffect(() => {
         currentTimerRef.current = currentTimer

@@ -1,5 +1,3 @@
-import ReactDOM from "react-dom";
-
 import { GameOverPortalProps } from "../../../../types/props";
 
 import FailedState from "./_FailedState";

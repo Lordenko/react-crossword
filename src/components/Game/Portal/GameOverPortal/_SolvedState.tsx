@@ -6,15 +6,28 @@ import NextDifficultyButton from "./NextDifficultyButton";
 import ScoreBanner from "./ScoreBanner";
 
 const SolvedState = (props: SolvedStatePortalProps) => {
-    useEffect(() => {
-        if (props.crosswordStatus !== "solved") return
-        if (props.currentPlayerId === null) return
-        props.updatePlayerScore(
-            props.currentPlayerId,
-            props.score + props.calcScore(props.timer, props.difficulty))
-    }, [])
+    const {
+        calcScore,
+        crosswordStatus,
+        currentPlayerId,
+        difficulty,
+        getNextLevelOfDifficulty,
+        resetGame,
+        score,
+        timer,
+        updatePlayerDifficulty,
+        updatePlayerScore,
+    } = props
 
-    if (props.crosswordStatus !== "solved") return null
+    useEffect(() => {
+        if (crosswordStatus !== "solved") return
+        if (currentPlayerId === null) return
+        updatePlayerScore(
+            currentPlayerId,
+            score + calcScore(timer, difficulty))
+    }, [crosswordStatus, currentPlayerId, score, timer, difficulty, updatePlayerScore, calcScore])
+
+    if (crosswordStatus !== "solved") return null
 
     return (
         <>
@@ -23,23 +36,23 @@ const SolvedState = (props: SolvedStatePortalProps) => {
             </div>
 
             <ScoreBanner
-                score={props.score}
-                timer={props.timer}
-                crosswordDifficulty={props.difficulty}
-                calcScore={props.calcScore}
+                score={score}
+                timer={timer}
+                crosswordDifficulty={difficulty}
+                calcScore={calcScore}
             />
 
             <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
                 <TryAgainButton
-                    resetGame={props.resetGame}
+                    resetGame={resetGame}
                 />
 
                 <NextDifficultyButton
-                    crosswordDifficulty={props.difficulty}
-                    currentPlayerId={props.currentPlayerId}
-                    getNextLevelOfDifficulty={props.getNextLevelOfDifficulty}
-                    updatePlayerDifficulty={props.updatePlayerDifficulty}
-                    resetGame={props.resetGame}
+                    crosswordDifficulty={difficulty}
+                    currentPlayerId={currentPlayerId}
+                    getNextLevelOfDifficulty={getNextLevelOfDifficulty}
+                    updatePlayerDifficulty={updatePlayerDifficulty}
+                    resetGame={resetGame}
                 />
             </div>
         </>

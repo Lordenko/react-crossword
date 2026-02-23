@@ -1,0 +1,135 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>react-crossword</title><meta name="description" content="Documentation for react-crossword"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">react-crossword</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>react-crossword</h1></div><div class="tsd-panel tsd-typography"><h1 id="🧩-crossword-3х3" class="tsd-anchor-link">🧩 Crossword 3х3<a href="#🧩-crossword-3х3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<p><a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
+<a href="https://github.com/Lordenko/react-crossword/commits/main"><img src="https://img.shields.io/github/last-commit/Lordenko/react-crossword" alt="Last Commit"></a>
+<a href="https://github.com/Lordenko/react-crossword/issues"><img src="https://img.shields.io/github/issues/Lordenko/react-crossword" alt="Open Issues"></a>
+<a href="https://github.com/Lordenko/react-crossword/stargazers"><img src="https://img.shields.io/github/stars/Lordenko/react-crossword?style=social" alt="Stars"></a></p>
+<blockquote>
+<p>An <strong>interactive crossword game</strong> built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Zustand</strong>, and <strong>Formik/Yup</strong>.<br>
+Track multiple players, difficulty levels, and scores with a responsive, modern UI.</p>
+</blockquote>
+<hr>
+<h2 id="⚙️-requirements" class="tsd-anchor-link">⚙️ Requirements<a href="#⚙️-requirements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li><strong>Node.js</strong> (^18.0.0)</li>
+<li><strong>npm</strong> (^10.0.0)</li>
+</ul>
+<hr>
+<h2 id="🛠-scripts-configuration" class="tsd-anchor-link">🛠 Scripts &amp; Configuration<a href="#🛠-scripts-configuration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li><code>npm start</code> - start app on <a href="http://localhost:3000">http://localhost:3000</a>.</li>
+<li><code>npm run build</code> - build project for production start.</li>
+</ul>
+<hr>
+<h2 id="🌟-features" class="tsd-anchor-link">🌟 Features<a href="#🌟-features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li>Multi-player support with <code>localStorage</code> persistence</li>
+<li>Dynamic difficulty: <code>easy</code>, <code>medium</code>, <code>hard</code></li>
+<li>Timer-based scoring system</li>
+<li>Horizontal &amp; vertical crossword hints</li>
+<li>Portal modals for:
+<ul>
+<li>Game Over</li>
+<li>Pre-Start</li>
+<li>Score Summary</li>
+</ul>
+</li>
+<li>Settings page for username and difficulty</li>
+<li>Fully responsive UI</li>
+<li>Modern React Hooks + Zustand state management</li>
+</ul>
+<hr>
+<h2 id="📸-demo" class="tsd-anchor-link">📸 Demo<a href="#📸-demo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p><img src="media/demo.png" alt="Crossword Game Demo"></p>
+<hr>
+<h2 id="🚀-getting-started" class="tsd-anchor-link">🚀 Getting Started<a href="#🚀-getting-started" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="bash"><span class="hl-0">git</span><span class="hl-1"> </span><span class="hl-2">clone</span><span class="hl-1"> </span><span class="hl-2">https://github.com/Lordenko/react-crossword.git</span><br/><span class="hl-0">cd</span><span class="hl-1"> </span><span class="hl-2">react-crossword</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">start</span><br/>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="🗂-project-structure" class="tsd-anchor-link">🗂 Project Structure<a href="#🗂-project-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="plaintext">
+src/
+├─ app/               # Main application logic or core files
+├─ assets/            # Static files (images, fonts, potentially shared data)
+├─ components/        # Reusable UI components
+│  ├─ Game/           # Components specific to the Game Page
+│  ├─ Layaout/        # Components for general page structure
+│  ├─ Results/        # Components specific to displaying results or scores
+│  └─ Settings/       # Components specific to the Settings Page 
+├─ hooks/             # Custom hooks for reusable logic
+├─ pages/             # Application pages (screens)
+├─ states/            # Global state management files (e.g., Zustand stores)
+├─ types/             # TypeScript types and interfaces
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="🎮-usage" class="tsd-anchor-link">🎮 Usage<a href="#🎮-usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Welcome to the game! Follow these steps to get started:</p>
+<ul>
+<li><strong>Setup:</strong> Go to the <strong>Settings</strong> section and set your <strong>username</strong> and preferred <strong>difficulty</strong> level.</li>
+<li><strong>Start the Game:</strong> Initiate the Game and begin filling in the crossword puzzle.</li>
+<li><strong>Scoring:</strong> The <strong>Timer</strong> counts down. Be quick — <strong>faster solutions</strong> yield significantly <strong>higher scores</strong>!</li>
+<li><strong>Game Over:</strong> When the game ends, the <strong>Game Over Portal</strong> will appear, showing your final <strong>score</strong>. From the portal, you will have options to:
+<ul>
+<li><strong>Retry</strong> the current level.</li>
+<li>Proceed to the <strong>next difficulty</strong> level.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🏆-scoring" class="tsd-anchor-link">🏆 Scoring<a href="#🏆-scoring" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Your final score is calculated based on the difficulty multiplier and the time remaining when the puzzle is solved.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Difficulty</th>
+<th style="text-align:left">Multiplier</th>
+<th style="text-align:left">Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Easy</td>
+<td style="text-align:left">1×</td>
+<td style="text-align:left">1 × (Time Remaining)</td>
+</tr>
+<tr>
+<td style="text-align:left">Medium</td>
+<td style="text-align:left">2×</td>
+<td style="text-align:left">2 × (Time Remaining)</td>
+</tr>
+<tr>
+<td style="text-align:left">Hard</td>
+<td style="text-align:left">3×</td>
+<td style="text-align:left">3 × (Time Remaining)</td>
+</tr>
+</tbody>
+</table>
+<p>The score is dynamically updated as soon as the crossword is successfully solved.</p>
+<hr>
+<h2 id="🛠-technologies" class="tsd-anchor-link">🛠 Technologies<a href="#🛠-technologies" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>This project is built using the following core technologies:</p>
+<ul>
+<li><strong>Frontend:</strong> React + TypeScript (for strong typing and component-based architecture)</li>
+<li><strong>State Management:</strong> <strong>Zustand</strong> (lightweight and fast state management)</li>
+<li><strong>Forms &amp; Validation:</strong> <strong>Formik</strong> and <strong>Yup</strong></li>
+<li><strong>Styling:</strong> <strong>Tailwind CSS</strong> (utility-first CSS framework)</li>
+<li><strong>Routing:</strong> <strong>React Router</strong> (for navigation)</li>
+</ul>
+<hr>
+<h2 id="🤝-contributing" class="tsd-anchor-link">🤝 Contributing<a href="#🤝-contributing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>We welcome contributions! If you want to contribute, please follow these steps:</p>
+<ol>
+<li><strong>Fork</strong> the repository.</li>
+<li>Create a new branch: <code>git checkout -b feature/your-feature</code></li>
+<li>Commit your changes: <code>git commit -m 'feat: your message'</code></li>
+<li>Push to your branch: <code>git push origin feature/your-feature</code></li>
+<li>Open a <strong>Pull Request</strong> (PR).</li>
+</ol>
+<hr>
+<h2 id="👤-author" class="tsd-anchor-link">👤 Author<a href="#👤-author" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li>GitHub: <a href="https://github.com/Lordenko">@Lordenko</a></li>
+<li>Project Link: <a href="https://github.com/Lordenko/KinKeeper">*Click me*</a></li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#🧩-crossword-3х3"><span>🧩 <wbr/>Crossword 3х3</span></a><ul><li><a href="#⚙️-requirements"><span>⚙️ <wbr/>Requirements</span></a></li><li><a href="#🛠-scripts-configuration"><span>🛠 <wbr/>Scripts &amp; <wbr/>Configuration</span></a></li><li><a href="#🌟-features"><span>🌟 <wbr/>Features</span></a></li><li><a href="#📸-demo"><span>📸 <wbr/>Demo</span></a></li><li><a href="#🚀-getting-started"><span>🚀 <wbr/>Getting <wbr/>Started</span></a></li><li><a href="#🗂-project-structure"><span>🗂 <wbr/>Project <wbr/>Structure</span></a></li><li><a href="#🎮-usage"><span>🎮 <wbr/>Usage</span></a></li><li><a href="#🏆-scoring"><span>🏆 <wbr/>Scoring</span></a></li><li><a href="#🛠-technologies"><span>🛠 <wbr/>Technologies</span></a></li><li><a href="#🤝-contributing"><span>🤝 <wbr/>Contributing</span></a></li><li><a href="#👤-author"><span>👤 <wbr/>Author</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">react-crossword</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

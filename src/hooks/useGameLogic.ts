@@ -18,6 +18,8 @@ const useGameLogic = () => {
 
     const { username, difficulty, score, setUsername, setDifficulty, setScore } = usePlayer()
 
+    const playersKey = JSON.stringify(players);
+
     useEffect(() => {
         if (currentPlayerId === null) return
         const player = getPlayerById(currentPlayerId)
@@ -26,7 +28,7 @@ const useGameLogic = () => {
         setUsername(player.info.name)
         setDifficulty(player.info.difficulty)
         setScore(player.info.score)
-    }, [JSON.stringify(players)])
+    }, [playersKey, currentPlayerId, getPlayerById, setUsername, setDifficulty, setScore])
 
     useEffect(() => {
 
@@ -42,13 +44,13 @@ const useGameLogic = () => {
 
     useEffect(() => {
         setTimer(calcTimeFromDifficulty(difficulty))
-    }, [difficulty])
+    }, [difficulty, setTimer])
 
     useEffect(() => {
         if (crosswordStatus !== "progress") return
 
         setCrossword(wordsJson[difficulty][Math.floor(Math.random() * wordsJson[difficulty].length)])
-    }, [crosswordStatus, difficulty])
+    }, [crosswordStatus, difficulty, setCrossword])
 
     useEffect(() => {
         if (crosswordStatus !== "progress") return;
@@ -56,18 +58,18 @@ const useGameLogic = () => {
             stopTimer()
             setCrosswordStatus("solved")
         }
-    }, [inputWords, crossword, crosswordStatus])
+    }, [inputWords, crossword, crosswordStatus, stopTimer, setCrosswordStatus])
 
     useEffect(() => {
         if (timer <= 0) {
             setCrosswordStatus("failed")
         }
-    }, [timer])
+    }, [timer, setCrosswordStatus])
 
     useEffect(() => {
         if (currentPlayerId === null) return
         startTimer()
-    }, [])
+    }, [currentPlayerId, startTimer])
 
     const calcScore = (timerSeconds: number, difficulty: Difficulty) => {
         const mult = { easy: 1, medium: 2, hard: 3 }[difficulty];
