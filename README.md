@@ -10,6 +10,20 @@
 
 ---
 
+## ⚙️ Requirements
+
+* **Node.js** (^18.0.0)
+* **npm** (^10.0.0)
+
+---
+
+## 🛠 Scripts & Configuration
+
+- `npm start` - start app on [http://localhost:3000](http://localhost:3000).
+- `npm run build` - build project for production start.
+
+---
+
 ## 🌟 Features
 
 - Multi-player support with `localStorage` persistence  
@@ -112,3 +126,11 @@ We welcome contributions! If you want to contribute, please follow these steps:
 3.  Commit your changes: `git commit -m 'feat: your message'`
 4.  Push to your branch: `git push origin feature/your-feature`
 5.  Open a **Pull Request** (PR).
+
+---
+
+## 👤 Author
+
+-  GitHub: [@Lordenko](https://github.com/Lordenko)
+- Project Link: [\*Click me\*](https://github.com/Lordenko/KinKeeper)
+
