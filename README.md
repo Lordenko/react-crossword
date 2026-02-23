@@ -21,6 +21,8 @@
 
 - `npm start` - start app on [http://localhost:3000](http://localhost:3000).
 - `npm run build` - build project for production start.
+- `npm run typedoc` - generate documentation for code.
+- `npm run storybook` - start storybook
 
 ---
 
