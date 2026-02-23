@@ -21,8 +21,6 @@ export interface LocalStorageState {
     updatePlayerDifficulty: (playerId: number, difficulty: Difficulty) => void,
     getPlayerByName: (playerName: string) => Player | undefined,
     getPlayerById: (playerId: number) => Player | undefined,
-
-
 }
 
 export interface InputWordsState {
