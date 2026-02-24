@@ -3,6 +3,12 @@ import { useLocalStorage } from "../states/LocalStorageState"
 import { useEffect } from "react"
 import PlayerCard from '../components/Results/PlayerCard'
 
+/**
+ * Custom hook that manages the logic and UI rendering functions for the Results view.
+ * Handles URL parameters, player sorting, redirection for invalid players, and conditional rendering.
+ *
+ * @returns An object containing the current URL parameters, player data, and specific render functions.
+ */
 const useResultsLogic = () => {
     const { name } = useParams()
     const { players, getPlayerByName, sortPlayers } = useLocalStorage()
@@ -20,6 +26,10 @@ const useResultsLogic = () => {
         }
     }, [name, navigate, getPlayerByName])
 
+    /**
+     * Renders a complete list of all players and their results.
+     * * @returns A React fragment containing the header and a mapped list of `PlayerCard` components.
+     */
     const renderMultiplePlayers = () => {
         return (
             <>
@@ -35,6 +45,10 @@ const useResultsLogic = () => {
         )
     }
 
+    /**
+     * Renders a fallback UI when the player list is empty.
+     * * @returns A JSX element displaying an "empty state" message.
+     */
     const renderEmptyPlayerList = () => {
         return (
             <h2 className="text-center text-xl font-bold text-gray-800 mb-2" >
@@ -43,6 +57,11 @@ const useResultsLogic = () => {
         )
     }
 
+    /**
+     * Renders the results for a single, specific player based on the provided name.
+     * * @param name - The name of the player to retrieve and display.
+     * @returns A React fragment containing the specific `PlayerCard`, or undefined if the name is invalid or the player is not found.
+     */
     const renderSoloPlayer = (name: string | null) => {
         if (!name) return
         const player = getPlayerByName(name)
@@ -68,6 +87,3 @@ const useResultsLogic = () => {
 }
 
 export default useResultsLogic
-
-
-
